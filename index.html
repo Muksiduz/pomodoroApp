@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="A calm, local-first focus workspace with a Pomodoro timer, tasks, notes and analytics.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Focus Farm — Make time grow</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Focus Farm home"><span class="brand-mark">F.</span><span>FOCUS FARM</span></a>
+      <div class="side-caption">YOUR WORKSPACE</div>
+      <nav id="sideNav" class="side-nav">
+        <button class="nav-item active" data-view="focus"><span class="nav-num">01</span><span>Focus</span><span class="nav-dot"></span></button>
+        <button class="nav-item" data-view="tasks"><span class="nav-num">02</span><span>Tasks</span></button>
+        <button class="nav-item" data-view="notes"><span class="nav-num">03</span><span>Notes</span></button>
+        <button class="nav-item" data-view="analytics"><span class="nav-num">04</span><span>Analytics</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="local-indicator"><span></span> SAVED ON THIS DEVICE</div>
+        <button class="text-button" id="exportBtn">Export my data ↗</button>
+        <button class="text-button" id="importBtn">Import backup ↗</button>
+        <input type="file" id="importFile" accept="application/json" hidden>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">F.</span> FOCUS FARM</div>
+        <div class="eyebrow" id="todayLabel"></div>
+        <div class="top-actions">
+          <span class="saved-label"><span class="live-dot"></span> LOCAL MODE</span>
+          <button class="install-button" id="installBtn" type="button">↓ INSTALL APP</button>
+          <button class="icon-button" id="settingsBtn" aria-label="Timer settings" title="Timer settings">⚙</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-focus">
+        <div class="section-heading">
+          <div><div class="eyebrow">01 / DEEP WORK</div><h1>Make room<br><span>for focus.</span></h1></div>
+          <div class="heading-aside">Small sessions.<br>Meaningful progress.</div>
+        </div>
+        <div class="focus-layout">
+          <div class="timer-panel">
+            <div class="timer-topline"><span id="modeLabel">FOCUS SESSION</span><span id="sessionCount">SESSION 01</span></div>
+            <div class="mode-tabs">
+              <button class="mode-tab active" data-mode="focus">Focus</button>
+              <button class="mode-tab" data-mode="short">Short break</button>
+              <button class="mode-tab" data-mode="long">Long break</button>
+            </div>
+            <div class="clock" aria-live="off"><span id="minutes">25</span><i>:</i><span id="seconds">00</span></div>
+            <div class="timer-progress"><span id="progressBar"></span></div>
+            <div class="timer-controls">
+              <button class="primary-button" id="startBtn">START FOCUS</button>
+              <button class="round-button" id="resetBtn" title="Reset timer">↺</button>
+              <button class="round-button" id="skipBtn" title="Skip session">↠</button>
+            </div>
+            <div class="timer-foot"><span id="timerHint">Stay with one thing at a time.</span><span id="coinHint">FOCUS, THEN REST.</span></div>
+          </div>
+          <div class="session-panel">
+            <div class="panel-title"><span>SESSION DETAILS</span><span class="tiny-index">01—03</span></div>
+            <label class="field-label" for="sessionTask">WHAT ARE YOU WORKING ON?</label>
+            <select id="sessionTask" class="field"><option value="">Choose a task (optional)</option></select>
+            <label class="field-label" for="sessionGoal">WHAT DO YOU HOPE TO COMPLETE?</label>
+            <input id="sessionGoal" class="field" placeholder="e.g. Finish the opening animation">
+            <label class="field-label" for="sessionIssue">NOTES / WHAT'S GETTING IN THE WAY?</label>
+            <textarea id="sessionIssue" class="field notes-field" placeholder="Capture a problem, thought or question. You can revisit it later..."></textarea>
+            <label class="field-label" for="sessionTags">TAGS <span class="muted">(comma separated)</span></label>
+            <input id="sessionTags" class="field" placeholder="Design, Study, Coding">
+            <div class="session-note">Your notes and tags are saved with the completed focus session.</div>
+          </div>
+        </div>
+        <div class="below-grid">
+          <div class="mini-card"><div class="eyebrow">TODAY'S FOCUS</div><div class="mini-number" id="todayFocus">0<span> min</span></div><div class="muted">Completed focus time</div></div>
+          <div class="mini-card"><div class="eyebrow">SESSIONS</div><div class="mini-number" id="todaySessions">0</div><div class="muted">Completed today</div></div>
+          <div class="mini-card"><div class="eyebrow">TASKS DONE</div><div class="mini-number" id="todayTasks">0</div><div class="muted">A little progress counts</div></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-tasks">
+        <div class="section-heading compact"><div><div class="eyebrow">02 / MAKE A PLAN</div><h1>Things worth<br><span>your time.</span></h1></div><div class="heading-aside">Turn intentions<br>into next actions.</div></div>
+        <div class="task-toolbar">
+          <div class="filter-tabs" id="taskFilters"><button class="filter-tab active" data-filter="all">All</button><button class="filter-tab" data-filter="today">Today</button><button class="filter-tab" data-filter="active">Active</button><button class="filter-tab" data-filter="done">Completed</button></div>
+          <button class="dark-button" id="addTaskBtn">＋ ADD TASK</button>
+        </div>
+        <form id="taskForm" class="composer hidden">
+          <input id="taskTitle" class="field" placeholder="What needs doing?" required maxlength="120">
+          <div class="composer-row"><input id="taskDate" class="field" type="date"><input id="taskTag" class="field" placeholder="Tag (e.g. Design)"><select id="taskPriority" class="field"><option value="normal">Normal priority</option><option value="high">High priority</option><option value="low">Low priority</option></select><button class="dark-button" type="submit">SAVE TASK</button></div>
+        </form>
+        <div class="task-list" id="taskList"></div>
+        <div class="empty-state" id="taskEmpty"><div class="empty-mark">02</div><h3>A clear list is a kind start.</h3><p>Add a task to give your focus somewhere to go.</p></div>
+      </section>
+
+      <section class="view" id="view-notes">
+        <div class="section-heading compact"><div><div class="eyebrow">03 / THINK ON PAPER</div><h1>Leave a trace<br><span>of your thinking.</span></h1></div><div class="heading-aside">Ideas, questions,<br>and things to remember.</div></div>
+        <div class="notes-toolbar"><p class="muted">Your notes stay on this device.</p><button class="dark-button" id="newNoteBtn">＋ NEW NOTE</button></div>
+        <div class="notes-grid" id="notesGrid"></div>
+        <div class="empty-state" id="notesEmpty"><div class="empty-mark">03</div><h3>Start with a thought.</h3><p>Keep ideas and session reflections in one quiet place.</p></div>
+      </section>
+
+      <section class="view" id="view-analytics">
+        <div class="section-heading compact"><div><div class="eyebrow">04 / LOOK BACK</div><h1>Progress has<br><span>a pattern.</span></h1></div><div class="heading-aside">Notice where your<br>attention goes.</div></div>
+        <div class="analytics-stats">
+          <div class="stat-card"><div class="eyebrow">FOCUS TIME / 7 DAYS</div><div class="stat-value" id="weekMinutes">0h 00m</div></div>
+          <div class="stat-card"><div class="eyebrow">SESSIONS COMPLETED</div><div class="stat-value" id="weekSessions">0</div></div>
+          <div class="stat-card"><div class="eyebrow">TASKS COMPLETED</div><div class="stat-value" id="weekTasks">0</div></div>
+        </div>
+        <div class="analytics-main">
+          <div class="chart-card"><div class="panel-title"><span>FOCUS BY DAY</span><span class="tiny-index">LAST 7 DAYS</span></div><div class="bar-chart" id="weekChart"></div></div>
+          <div class="chart-card"><div class="panel-title"><span>FOCUS BY TAG</span><span class="tiny-index">ALL TIME</span></div><div id="tagBreakdown" class="tag-breakdown"></div></div>
+        </div>
+        <div class="history-card"><div class="panel-title"><span>RECENT SESSIONS</span><span class="tiny-index">YOUR ACTIVITY</span></div><div id="sessionHistory"></div></div>
+      </section>
+
+      <footer class="footer"><span>FOCUS FARM / LOCAL EDITION</span><span>MAKE TIME GROW.</span></footer>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="active" data-view="focus"><b>01</b>Focus</button><button data-view="tasks"><b>02</b>Tasks</button><button data-view="notes"><b>03</b>Notes</button><button data-view="analytics"><b>04</b>Stats</button>
+  </nav>
+
+  <dialog id="settingsDialog" class="dialog">
+    <form method="dialog" class="dialog-head"><div><div class="eyebrow">PREFERENCES</div><h2>Timer settings</h2></div><button class="icon-button" aria-label="Close">×</button></form>
+    <div class="settings-fields">
+      <label>Focus duration <span><input id="focusDuration" type="number" min="1" max="180" value="25"> min</span></label>
+      <label>Short break <span><input id="shortDuration" type="number" min="1" max="60" value="5"> min</span></label>
+      <label>Long break <span><input id="longDuration" type="number" min="1" max="90" value="15"> min</span></label>
+      <label>Sessions before long break <span><input id="longEvery" type="number" min="2" max="8" value="4"></span></label>
+    </div>
+    <button class="dark-button full" id="saveSettingsBtn">SAVE SETTINGS</button>
+  </dialog>
+
+  <dialog id="noteDialog" class="dialog note-dialog">
+    <form method="dialog" class="dialog-head"><div><div class="eyebrow">YOUR NOTEBOOK</div><h2 id="noteDialogTitle">New note</h2></div><button class="icon-button" aria-label="Close">×</button></form>
+    <input id="noteTitle" class="field note-title-input" placeholder="Give this note a title">
+    <textarea id="noteBody" class="field note-body-input" placeholder="Start writing..."></textarea>
+    <div class="dialog-actions"><button class="text-button" id="deleteNoteBtn" type="button">DELETE NOTE</button><button class="dark-button" id="saveNoteBtn" type="button">SAVE NOTE</button></div>
+  </dialog>
+
+  <dialog id="installDialog" class="dialog install-dialog">
+    <form method="dialog" class="dialog-head"><div><div class="eyebrow">FOCUS FARM / INSTALL</div><h2>Take your focus with you.</h2></div><button class="icon-button" aria-label="Close">×</button></form>
+    <p class="install-copy" id="installCopy">Install Focus Farm on your phone for a full-screen app experience. Your data will stay saved in this browser on this device.</p>
+    <div class="install-steps" id="installSteps"></div>
+    <button class="dark-button full" id="installAction" type="button">INSTALL FOCUS FARM</button>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>

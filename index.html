@@ -20,6 +20,8 @@
         <button class="nav-item" data-view="tasks"><span class="nav-num">02</span><span>Tasks</span></button>
         <button class="nav-item" data-view="notes"><span class="nav-num">03</span><span>Notes</span></button>
         <button class="nav-item" data-view="analytics"><span class="nav-num">04</span><span>Analytics</span></button>
+        <button class="nav-item" data-view="habits"><span class="nav-num">05</span><span>Habits</span></button>
+        <button class="nav-item" data-view="goals"><span class="nav-num">06</span><span>Goals</span></button>
       </nav>
       <div class="sidebar-bottom">
         <div class="local-indicator"><span></span> SAVED ON THIS DEVICE</div>
@@ -103,6 +105,68 @@
         <div class="empty-state" id="notesEmpty"><div class="empty-mark">03</div><h3>Start with a thought.</h3><p>Keep ideas and session reflections in one quiet place.</p></div>
       </section>
 
+      <section class="view" id="view-habits">
+        <div class="section-heading compact"><div><div class="eyebrow">05 / DAILY PRACTICE</div><h1>Little things,<br><span>done often.</span></h1></div><div class="heading-aside">Build a rhythm.<br>Keep your own journal.</div></div>
+        <div class="habit-layout">
+          <aside class="habit-list-panel glass-card">
+            <div class="panel-title"><span>YOUR HABITS</span><span class="tiny-index" id="habitCount">0 HABITS</span></div>
+            <div id="habitList" class="habit-list"></div>
+            <button class="dark-button full" id="addHabitBtn">＋ ADD A HABIT</button>
+            <form id="habitForm" class="habit-form hidden">
+              <input id="habitName" class="field" placeholder="e.g. Read 10 pages" maxlength="70" required>
+              <input id="habitIcon" class="field" placeholder="Emoji / symbol (optional)" maxlength="4">
+              <button class="dark-button full" type="submit">CREATE HABIT</button>
+            </form>
+          </aside>
+          <div class="habit-detail glass-card" id="habitDetail">
+            <div class="habit-empty"><div class="empty-mark">05</div><h3>Choose a habit to begin.</h3><p>Create a habit, then mark each day and leave a note about how it went.</p></div>
+          </div>
+        </div>
+      </section>
+      <section class="view" id="view-goals">
+        <div class="section-heading compact"><div><div class="eyebrow">06 / LONG-TERM PROGRESS</div><h1>Give your goals<br><span>some space.</span></h1></div><div class="heading-aside">Track the change.<br>Keep the memories.</div></div>
+        <div class="goal-intro glass-card">
+          <div><div class="eyebrow">YOUR DIRECTION</div><h2>Progress, not perfection.</h2><p>Set goals, record milestones, and keep photos and videos alongside your journey. Everything stays on this device.</p></div>
+          <button class="dark-button" id="addGoalBtn">＋ NEW GOAL</button>
+        </div>
+        <form id="goalForm" class="composer hidden goal-form">
+          <input id="goalTitle" class="field" placeholder="What do you want to achieve?" required maxlength="100">
+          <div class="composer-row">
+            <input id="goalTarget" class="field" type="number" min="0.01" step="any" placeholder="Target amount">
+            <input id="goalCurrent" class="field" type="number" step="any" placeholder="Current progress">
+            <input id="goalUnit" class="field" placeholder="Unit (e.g. books, km)">
+            <input id="goalDate" class="field" type="date">
+          </div>
+          <button class="dark-button" type="submit">CREATE GOAL</button>
+        </form>
+        <div class="goal-grid" id="goalGrid"></div>
+        <div class="empty-state" id="goalEmpty"><div class="empty-mark">06</div><h3>Give something a direction.</h3><p>Create a goal and add milestones as you move forward.</p></div>
+
+        <div class="weight-section glass-card">
+          <div class="weight-head">
+            <div><div class="eyebrow">BODY / WEIGHT JOURNAL</div><h2>Every small change counts.</h2><p>Log your weight over time and see your trend.</p></div>
+            <div class="weight-current"><span>CURRENT</span><strong id="currentWeight">—</strong><small id="weightChange">Add your first entry</small></div>
+          </div>
+          <div class="weight-controls">
+            <form id="weightForm" class="weight-form">
+              <label class="field-label" for="weightValue">WEIGHT (KG)</label>
+              <input id="weightValue" class="field" type="number" min="1" max="500" step="0.1" placeholder="e.g. 84.5" required>
+              <label class="field-label" for="weightDate">DATE</label>
+              <input id="weightDate" class="field" type="date" required>
+              <label class="field-label" for="weightNote">NOTE (OPTIONAL)</label>
+              <input id="weightNote" class="field" placeholder="How are you feeling?">
+              <button class="dark-button full" type="submit">＋ LOG WEIGHT</button>
+            </form>
+            <div class="weight-chart-area">
+              <div class="weight-chart-top"><span class="panel-title">WEIGHT TREND</span><span class="tiny-index" id="weightRange">ALL ENTRIES</span></div>
+              <div id="weightChart" class="weight-chart"><p class="muted">Your chart will appear after your first weigh-in.</p></div>
+              <div class="weight-goal-row"><label for="weightTarget">TARGET WEIGHT</label><div><input id="weightTarget" type="number" min="1" max="500" step="0.1" placeholder="Set kg"> <button class="soft-button" id="saveWeightTarget" type="button">SAVE</button></div></div>
+            </div>
+          </div>
+          <div class="weight-history"><div class="panel-title"><span>WEIGHT HISTORY</span><span class="tiny-index">MOST RECENT FIRST</span></div><div id="weightHistory"></div></div>
+        </div>
+      </section>
+
       <section class="view" id="view-analytics">
         <div class="section-heading compact"><div><div class="eyebrow">04 / LOOK BACK</div><h1>Progress has<br><span>a pattern.</span></h1></div><div class="heading-aside">Notice where your<br>attention goes.</div></div>
         <div class="analytics-stats">
@@ -122,9 +186,15 @@
   </div>
 
   <nav class="mobile-nav" id="mobileNav">
-    <button class="active" data-view="focus"><b>01</b>Focus</button><button data-view="tasks"><b>02</b>Tasks</button><button data-view="notes"><b>03</b>Notes</button><button data-view="analytics"><b>04</b>Stats</button>
+    <button class="active" data-view="focus"><b>01</b>Focus</button><button data-view="tasks"><b>02</b>Tasks</button><button data-view="notes"><b>03</b>Notes</button><button data-view="analytics"><b>04</b>Stats</button><button data-view="habits"><b>05</b>Habits</button><button data-view="goals"><b>06</b>Goals</button>
   </nav>
 
+  <dialog id="habitNoteDialog" class="dialog note-dialog">
+    <form method="dialog" class="dialog-head"><div><div class="eyebrow">HABIT JOURNAL</div><h2 id="habitNoteHeading">Daily reflection</h2></div><button class="icon-button" aria-label="Close">×</button></form>
+    <div class="habit-note-prompt" id="habitNotePrompt">What happened today?</div>
+    <textarea id="habitDayNote" class="field note-body-input" placeholder="Write a little about today — what helped, what got in the way, or how you felt..."></textarea>
+    <div class="dialog-actions"><button class="text-button" id="clearHabitDay" type="button">CLEAR DAY</button><button class="dark-button" id="saveHabitDay" type="button">SAVE ENTRY</button></div>
+  </dialog>
   <dialog id="settingsDialog" class="dialog">
     <form method="dialog" class="dialog-head"><div><div class="eyebrow">PREFERENCES</div><h2>Timer settings</h2></div><button class="icon-button" aria-label="Close">×</button></form>
     <div class="settings-fields">
@@ -145,11 +215,10 @@
 
   <dialog id="installDialog" class="dialog install-dialog">
     <form method="dialog" class="dialog-head"><div><div class="eyebrow">FOCUS FARM / INSTALL</div><h2>Take your focus with you.</h2></div><button class="icon-button" aria-label="Close">×</button></form>
-    <p class="install-copy" id="installCopy">Install Focus Farm on your phone for a full-screen app experience. Your data will stay saved in this browser on this device.</p>
+    <p class="install-copy">Install Focus Farm on your phone for a full-screen app experience. Your data stays saved in this browser on this device.</p>
     <div class="install-steps" id="installSteps"></div>
     <button class="dark-button full" id="installAction" type="button">INSTALL FOCUS FARM</button>
   </dialog>
-
   <div class="toast" id="toast" role="status"></div>
   <script src="./app.js"></script>
 </body>

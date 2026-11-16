@@ -10,3 +10,133 @@
 .install-steps{background:#f5f5f3;padding:15px 17px;margin-bottom:20px;font-size:12px;line-height:1.8;color:#555}
 .install-steps ol{padding-left:18px;margin:0}.install-steps li+li{margin-top:7px}
 @media(max-width:650px){.install-button{padding:9px 10px;font-size:8px}.saved-label{display:none}.top-actions{gap:8px}}
+
+/* Focus Farm visual refresh — soft glass, editorial orbit navigation */
+:root{--paper:#f4f0ea;--line:rgba(132,112,91,.16);--muted:#9c8e7e;--ink:#38332e;--white:rgba(255,255,255,.58);--glass:rgba(255,255,255,.55);--display:'Poppins',sans-serif;--sans:'Poppins',sans-serif}
+body{background:radial-gradient(ellipse at 15% 0%,#fffaf3 0%,transparent 42%),linear-gradient(135deg,#f5f0e9,#ece8e2);color:#39332e;font-family:'Poppins',sans-serif}
+.app-shell{grid-template-columns:270px 1fr}
+.sidebar{background:rgba(255,252,247,.48);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-right:1px solid rgba(151,127,102,.15);padding:32px 20px}
+.brand{font-family:'Poppins',sans-serif;letter-spacing:.08em}.brand-mark{background:#8f755e;color:#fff;box-shadow:0 6px 18px #8f755e33}
+.side-caption{margin-top:58px;color:#b09b85}
+.side-nav{position:relative;gap:10px;padding:15px 0 15px 5px}
+.side-nav:before{content:"";position:absolute;left:21px;top:0;bottom:0;width:1px;background:linear-gradient(transparent,#cbb9a5 12%,#cbb9a5 88%,transparent);opacity:.8}
+.nav-item{position:relative;z-index:1;gap:14px;border:1px solid transparent;border-radius:22px;background:transparent;color:#998b7d;padding:13px 13px;transition:.2s;font-family:'Poppins',sans-serif}
+.nav-item.active{background:rgba(255,255,255,.72);border-color:rgba(178,151,122,.25);box-shadow:0 7px 22px rgba(95,72,48,.08);color:#544638}
+.nav-num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#f0e8de;color:#a88f75;font:10px 'Poppins',sans-serif}
+.nav-item.active .nav-num{background:#92765e;color:white}.nav-dot{background:#92765e}
+.local-indicator{color:#9b8a78;font-family:'Poppins',sans-serif;letter-spacing:.06em}
+.main{padding-left:5vw;padding-right:5vw}
+.topbar{border-color:rgba(146,118,94,.14)}
+.topbar .eyebrow{color:#a18e7b;font-family:'Poppins',sans-serif;font-size:9px}
+.saved-label,.eyebrow,.panel-title,.timer-topline,.field-label,.tiny-index,.footer,.timer-foot,.session-note{font-family:'Poppins',sans-serif;letter-spacing:.08em}
+.icon-button{border-color:#e4d8ca;background:rgba(255,255,255,.48);color:#92765e}
+.section-heading h1{font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.065em;color:#50473e}
+.section-heading h1 span{color:#b3a18e}
+.heading-aside{color:#a49382;font-family:'Poppins',sans-serif}
+.timer-panel{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.32);border-radius:27px;background:linear-gradient(145deg,rgba(48,43,39,.94),rgba(20,20,20,.97));box-shadow:0 24px 55px rgba(60,48,37,.18);backdrop-filter:blur(18px);padding:29px 30px 23px}
+.timer-panel:before{content:"";position:absolute;inset:-40% auto auto 48%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 68%);pointer-events:none}
+.timer-topline{position:relative;color:#c3b6a8}.mode-tab{border-radius:20px;border-color:#55504b;color:#c2b7ad;font-family:'Poppins',sans-serif}.mode-tab.active{background:#f2e9df;border-color:#f2e9df;color:#55483b}
+.clock{font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.08em;text-shadow:0 8px 28px #0005}
+.timer-progress{background:#55504b;border-radius:5px;overflow:hidden}.timer-progress span{background:linear-gradient(90deg,#bca187,#f5e9da)}
+.primary-button{border-radius:16px;background:linear-gradient(135deg,#f8f0e8,#d9c8b6);font-family:'Poppins',sans-serif;letter-spacing:.08em;color:#514337;box-shadow:0 8px 24px #0002}.round-button{border-radius:50%;border-color:#68605a;color:#f3e9df}
+.timer-foot{color:#b0a399}
+.session-panel,.mini-card,.stat-card,.chart-card,.history-card,.task-row,.note-card,.composer{background:rgba(255,255,255,.62);border:1px solid rgba(173,148,122,.2);border-radius:22px;box-shadow:0 12px 35px rgba(91,69,46,.045);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.session-panel{padding:25px 25px}.panel-title{color:#917b65}
+.field{background:rgba(255,255,255,.65);border-color:#e5d9cc;border-radius:13px;font-family:'Poppins',sans-serif;color:#50463c}.field:focus{border-color:#a78c70;box-shadow:0 0 0 3px #b59a7d1c}
+.field::placeholder{color:#b8aa9b}
+.session-note{color:#a99a89}
+.mini-card{padding:20px 22px}.mini-number,.stat-value{font-family:'Poppins',sans-serif;color:#594b3e}
+.dark-button{border:1px solid #8e755d;border-radius:14px;background:linear-gradient(135deg,#967b61,#725b47);color:white;font-family:'Poppins',sans-serif;letter-spacing:.05em;box-shadow:0 8px 18px #80664e20}
+.dark-button:hover{background:#6e5946}.filter-tab{font-family:'Poppins',sans-serif;border-radius:16px}.filter-tab.active{background:rgba(255,255,255,.75);border-color:#e4d6c7;color:#66513f}
+.task-row{padding:16px 18px}.task-check{accent-color:#92765e}.task-name,.note-card h3{font-family:'Poppins',sans-serif}
+.note-card{min-height:180px}.note-card h3{color:#5d4d3d}
+.footer{border-color:#e5d9cc;color:#ad9b88}
+.dialog{border:1px solid rgba(255,255,255,.7);border-radius:24px;background:rgba(250,246,240,.94);backdrop-filter:blur(24px);color:#4e4339}
+.dialog-head h2{font-family:'Poppins',sans-serif;font-weight:500}.settings-fields label{font-family:'Poppins',sans-serif}
+.mobile-nav{background:rgba(250,246,240,.78);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid rgba(170,145,119,.22);border-radius:24px;margin:0 12px 10px;padding:10px 4px calc(10px + env(safe-area-inset-bottom));box-shadow:0 12px 40px #59463218}
+.mobile-nav button{font-family:'Poppins',sans-serif;color:#a48f79}.mobile-nav button.active{color:#554434}.mobile-nav button b{font-family:'Poppins',sans-serif;color:#b79d82}
+.toast{border-radius:14px;font-family:'Poppins',sans-serif}
+.habit-layout{display:grid;grid-template-columns:minmax(230px,.7fr) minmax(0,1.6fr);gap:15px;align-items:start}
+.glass-card{background:rgba(255,255,255,.62);border:1px solid rgba(173,148,122,.2);border-radius:24px;box-shadow:0 14px 40px rgba(91,69,46,.055);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.habit-list-panel{padding:22px}.habit-list{display:grid;gap:8px;margin-bottom:16px}
+.habit-choice{width:100%;border:1px solid transparent;background:transparent;border-radius:16px;padding:12px;display:flex;align-items:center;gap:11px;text-align:left;color:#756655;font-family:'Poppins',sans-serif}
+.habit-choice.active{background:rgba(255,255,255,.82);border-color:#e3d4c3;box-shadow:0 7px 20px #73583a0d;color:#4f4134}
+.habit-emoji{width:34px;height:34px;border-radius:12px;background:#f0e8de;display:grid;place-items:center;font-size:17px}
+.habit-choice small{display:block;color:#ad9a86;font-size:9px;margin-top:2px}
+.habit-choice .habit-arrow{margin-left:auto;color:#b39b81}
+.habit-form{margin-top:14px}.habit-form .field{margin-bottom:9px}
+.habit-detail{padding:23px;min-height:510px}
+.habit-detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:18px}
+.habit-detail-title{font:500 25px 'Poppins',sans-serif;letter-spacing:-.05em;color:#574839;margin:0}
+.habit-detail-sub{font-size:11px;color:#a3917f;margin-top:5px}
+.habit-actions{display:flex;gap:7px;align-items:center}
+.soft-button{border:1px solid #e4d7c9;background:rgba(255,255,255,.55);color:#92765e;border-radius:12px;padding:9px 11px;font:10px 'Poppins',sans-serif}
+.habit-summary{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 24px}
+.habit-chip{border:1px solid #e4d8ca;background:rgba(255,255,255,.45);border-radius:12px;padding:8px 12px;font-size:10px;color:#a18a73}
+.habit-chip strong{font-size:17px;color:#514538;margin-left:7px;font-weight:500}
+.habit-calendar-wrap{overflow-x:auto;padding-bottom:5px}
+.habit-calendar{display:grid;grid-template-columns:34px repeat(7,minmax(28px,1fr));gap:6px;min-width:280px;max-width:470px}
+.habit-month{grid-column:2/-1;text-align:center;color:#a48d74;font-size:11px;padding:2px 0 5px}
+.habit-weekday{font-size:9px;color:#ac9a88;text-align:center;padding:2px 0}
+.habit-day{aspect-ratio:1;border:1px solid #d9cbbd;background:rgba(230,224,216,.55);border-radius:8px;color:#8c7966;font-size:10px;position:relative;display:grid;place-items:center;padding:0}
+.habit-day.empty{border:0;background:transparent;pointer-events:none}
+.habit-day.done{background:#94775d;border-color:#94775d;color:#fff;box-shadow:0 3px 9px #94775d30}
+.habit-day.today{outline:2px solid #c5a98b;outline-offset:2px}
+.habit-day.has-note:after{content:"";position:absolute;bottom:4px;width:3px;height:3px;border-radius:50%;background:#d4b38e}
+.habit-day.done.has-note:after{background:#fff}
+.habit-calendar-legend{display:flex;gap:13px;color:#a3917f;font-size:9px;margin-top:12px}.habit-calendar-legend span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:3px;background:#e5ddd4;margin-right:5px}.habit-calendar-legend span:first-child:before{background:#94775d}
+.habit-day-entry{margin-top:22px;border-top:1px solid #e8ded3;padding-top:18px}
+.habit-day-entry-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+.habit-day-entry h4{font:500 13px 'Poppins',sans-serif;color:#685541;margin:0}
+.habit-day-entry p{font-size:11px;line-height:1.7;color:#9b8b7a;white-space:pre-wrap;margin:0}
+.habit-empty{text-align:center;padding:110px 15px;color:#a18f7e}.habit-empty h3{font:500 18px 'Poppins',sans-serif;color:#71604f}.habit-empty p{font-size:11px;line-height:1.7;max-width:290px;margin:auto}
+.habit-note-prompt{font-size:12px;color:#907b65;margin:-10px 0 14px}
+@media(max-width:900px){.app-shell{grid-template-columns:210px 1fr}.habit-layout{grid-template-columns:1fr}.habit-list{grid-template-columns:repeat(2,minmax(0,1fr))}.habit-detail{min-height:450px}}
+@media(max-width:650px){.sidebar{display:none}.app-shell{display:block}.main{padding-left:16px;padding-right:16px}.habit-layout{gap:11px}.habit-list-panel{padding:17px}.habit-list{grid-template-columns:1fr 1fr}.habit-detail{padding:17px;min-height:440px}.habit-detail-title{font-size:21px}.habit-calendar{gap:5px;max-width:none}.habit-day{border-radius:7px}.habit-summary{gap:6px}.habit-chip{padding:7px 9px}.habit-actions{flex-wrap:wrap}.mobile-nav{overflow-x:auto;justify-content:flex-start;gap:13px;padding-left:12px;padding-right:12px}.mobile-nav button{min-width:49px;font-size:8px}.mobile-nav button b{font-size:9px}}
+
+.hidden{display:none!important}
+.install-button{border:1px solid #967b61;background:linear-gradient(135deg,#967b61,#725b47);color:#fff;padding:10px 13px;border-radius:13px;font:9px 'Poppins',sans-serif;letter-spacing:.06em;white-space:nowrap;box-shadow:0 7px 18px #80664e20}
+.install-button:hover{filter:brightness(.96)}.install-button.installed{background:rgba(255,255,255,.65);color:#8e755d;border-color:#ddcdbb;box-shadow:none}
+.install-copy{font-size:12px;line-height:1.7;color:#8c7b69;margin:-8px 0 20px}
+.install-steps{background:rgba(255,255,255,.65);border:1px solid #eadfd3;border-radius:14px;padding:15px 17px;margin-bottom:20px;font-size:12px;line-height:1.8;color:#6d5d4c}
+.install-steps ol{padding-left:18px;margin:0}.install-steps li+li{margin-top:7px}
+.side-nav:before{left:-27px;width:75px;border-right:1px solid #cbb9a5;border-radius:0 100% 100% 0;background:none}
+@media(max-width:650px){.install-button{padding:8px 9px;font-size:8px}.saved-label{display:none}.top-actions{gap:7px}}
+
+.goal-intro{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 27px;margin-bottom:16px}
+.goal-intro h2,.weight-head h2{font:500 23px 'Poppins',sans-serif;letter-spacing:-.045em;color:#5c4b3b;margin:7px 0}
+.goal-intro p,.weight-head p{font-size:11px;line-height:1.7;color:#9b8977;margin:0;max-width:470px}
+.goal-form{border-radius:20px}
+.goal-form .composer-row{grid-template-columns:repeat(4,1fr)}
+.goal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:16px 0}
+.goal-card{background:rgba(255,255,255,.65);border:1px solid rgba(173,148,122,.22);border-radius:22px;padding:20px;box-shadow:0 12px 32px rgba(91,69,46,.045);backdrop-filter:blur(18px);min-width:0}
+.goal-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.goal-card h3{font:500 17px 'Poppins',sans-serif;color:#594a3b;margin:0}
+.goal-card-meta{font-size:10px;color:#a18e7a;margin-top:5px}
+.goal-progress-track{height:6px;background:#e9e1d8;border-radius:10px;overflow:hidden;margin:17px 0 8px}
+.goal-progress-fill{height:100%;background:linear-gradient(90deg,#bba087,#81674f);border-radius:10px}
+.goal-progress-label{display:flex;justify-content:space-between;color:#a18f7e;font-size:10px}
+.goal-progress-label strong{color:#6a5744;font-weight:500}
+.goal-card-actions{display:flex;gap:7px;margin-top:15px;flex-wrap:wrap}
+.goal-media-input{display:none}
+.goal-media{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:13px}
+.goal-media-item{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#e8e0d6;border:1px solid #e2d5c7}
+.goal-media-item img,.goal-media-item video{width:100%;height:100%;object-fit:cover;display:block}
+.goal-media-item .media-remove{position:absolute;right:4px;top:4px;width:22px;height:22px;border:0;border-radius:50%;background:#181512bb;color:white;font-size:14px;line-height:1}
+.goal-media-empty{font-size:10px;color:#b09d88;margin-top:12px}
+.weight-section{padding:24px 26px;margin-top:24px}
+.weight-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.weight-current{text-align:right;min-width:110px}.weight-current span,.weight-current small{display:block;font:9px 'Poppins',sans-serif;color:#a28f7b;letter-spacing:.08em}.weight-current strong{display:block;font:500 35px 'Poppins',sans-serif;color:#6b5540;letter-spacing:-.06em}.weight-current small{letter-spacing:0}
+.weight-controls{display:grid;grid-template-columns:220px 1fr;gap:25px;margin-top:20px;padding-top:19px;border-top:1px solid #e8ded3}
+.weight-form{display:flex;flex-direction:column}.weight-form .field{margin-bottom:12px}
+.weight-chart-top{display:flex;justify-content:space-between;align-items:center}
+.weight-chart{min-height:190px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.weight-chart svg{width:100%;height:190px;overflow:visible}
+.weight-goal-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee5dc;padding-top:12px;color:#a18e7a;font:9px 'Poppins',sans-serif;letter-spacing:.06em}
+.weight-goal-row input{width:95px;border:1px solid #e4d8ca;border-radius:9px;padding:8px;background:#fff9;color:#5a4938}
+.weight-history{border-top:1px solid #e8ded3;margin-top:18px;padding-top:18px}
+.weight-history-row{display:grid;grid-template-columns:1fr auto auto;gap:15px;align-items:center;padding:10px 0;border-bottom:1px solid #eee7df;font-size:11px;color:#746453}
+.weight-history-row span{color:#a3917f}.weight-history-row strong{font:11px 'Poppins',sans-serif;color:#5c4b3a}
+.weight-delete{border:0;background:none;color:#ad9a87;font-size:17px}
+@media(max-width:850px){.goal-grid{grid-template-columns:1fr}.goal-form .composer-row{grid-template-columns:1fr 1fr}.weight-controls{grid-template-columns:1fr}.weight-form{display:grid;grid-template-columns:1fr 1fr;column-gap:10px}.weight-form .dark-button{grid-column:1/-1}}
+@media(max-width:650px){.goal-intro{align-items:flex-start;flex-direction:column;padding:19px}.goal-intro h2,.weight-head h2{font-size:20px}.goal-form .composer-row{grid-template-columns:1fr 1fr}.goal-card{padding:17px}.goal-media{grid-template-columns:repeat(4,minmax(0,1fr))}.weight-section{padding:18px}.weight-head{gap:8px}.weight-current strong{font-size:29px}.weight-form{grid-template-columns:1fr}.weight-form .dark-button{grid-column:auto}.weight-history-row{gap:7px}.weight-goal-row{gap:6px}}

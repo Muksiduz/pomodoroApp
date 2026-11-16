@@ -63,3 +63,18 @@ The header includes an **INSTALL APP** button:
 5. Open the HTTPS Vercel URL on your phone. Use **INSTALL APP** in the website header.
 
 The install prompt is browser-controlled. If it does not appear immediately, reload the deployed HTTPS site and use the browser's own menu → Install app / Add to Home Screen.
+
+## Habit tracker
+Create habits, select a month, tap any date to toggle completion, and attach a private journal note to that habit/day. Habit check-ins and daily notes are stored locally and included in JSON backups.
+
+
+## Goals and weight tracker
+- Create goals with a target, current progress, unit and optional due date.
+- Update goal progress at any time.
+- Attach multiple photos and videos to each goal.
+- Media files are stored as blobs in the browser's IndexedDB (not uploaded to a server).
+- Weight journal records dated weigh-ins, optional notes, a target weight and a local trend chart.
+- JSON backups include goals, weight entries, and attached media. Large videos can create large backup files.
+
+## Local media storage notes
+Photos and videos stay inside this browser profile on this device. They are not synced between devices and can be removed if browser site data is cleared. Browser storage limits vary by device and available space; keep backups for important media. On iOS, use the installed web app or Safari and allow browser storage. The app does not upload any media to Vercel or a server.
